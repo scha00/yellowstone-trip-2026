@@ -79,6 +79,7 @@
   .stop-side{flex:0 0 auto; display:flex; flex-direction:column; align-items:flex-end; gap:6px;}
   .thumb-wrap{width:64px; height:64px; border-radius:10px; overflow:hidden; background:linear-gradient(135deg, rgba(62,143,148,.25), rgba(214,163,43,.25)); flex:0 0 auto;}
   .thumb-wrap img{width:100%; height:100%; object-fit:cover; display:block;}
+  .thumb-wrap.thumb-pin{display:flex; align-items:center; justify-content:center; font-size:26px;}
   .stop-name{font-weight:600; font-size:16.5px;}
   .stop-time{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--pine); white-space:nowrap;}
   .stop-body{font-size:14px; line-height:1.65; margin-top:8px; opacity:.9;}
@@ -105,6 +106,8 @@
   .guide-card:hover{transform:translateY(-1px); box-shadow:0 4px 14px rgba(35,32,25,0.08);}
   .guide-card h4{font-family:'Bitter', serif; font-size:18px; margin:0 0 4px; color:var(--rust);}
   .guide-card .kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--geyser); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;}
+  .guide-card h4{display:flex; align-items:center; flex-wrap:wrap; gap:6px;}
+  .day-pill{display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:700; color:#fff; background:var(--geyser); border-radius:999px; padding:2px 8px; letter-spacing:.02em; vertical-align:middle;}
   .guide-card p{font-size:14px; line-height:1.7; margin:0;}
   .res-card{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:14px; border-left:5px solid var(--pine);}
   .res-card h4{font-family:'Bitter', serif; font-size:17px; margin:0 0 10px; color:var(--pine-deep);}
@@ -243,7 +246,7 @@ const SITE_DETAILS = {
   },
   hayden: {
     title:{ko:'Hayden Valley', en:'Hayden Valley'},
-    mapsQuery:'44.6584,-110.4713',
+    mapsQuery:'44.6473,-110.4790',
     images:['Herd of bison in Hayden Valley.jpg','Hayden Valley, Yellowstone Nationalpark, Wyoming, USA.jpg','Bison in Hayden Valley, Yellowstone NP (2).jpg'],
     body:[
       {ko:'1871년 지질조사를 이끈 페르디난드 헤이든(Ferdinand Hayden)의 이름을 딴 계곡. 빙하기 이후 커다란 호수 바닥이었던 곳이 퇴적물로 메워지며 지금의 평탄한 초지가 됐어요. 땅속에 진흙·점토질 퇴적층이 두꺼워 나무뿌리가 뚫고 들어가기 어렵고, 그래서 숲 대신 광활한 초원이 펼쳐져요 — 대형 초식동물에겐 최고의 서식지죠.',
@@ -321,13 +324,18 @@ const SITE_DETAILS = {
 const DAYS = [
 { id:'d1', num:1, date:'Sat, Aug 1',
   theme:{ko:'도착 · 매머스 이동', en:'Arrival · drive to Mammoth'},
-  route:['BZN Airport','Bozeman shopping','Gardiner (Roosevelt Arch)','Mammoth Hot Springs'],
+  route:[
+    {label:'BZN Airport', mapsQuery:'45.7772,-111.1530'},
+    {label:'Bozeman shopping', mapsQuery:'45.6770,-111.0429'},
+    {label:'Gardiner (Roosevelt Arch)', mapsQuery:'45.0269,-110.7024'},
+    {label:'Mammoth Hot Springs', mapsQuery:'44.9767,-110.7048'}
+  ],
   stops:[
-    {tag:'FLIGHT', time:'13:56→17:11', klass:'', detail:null,
+    {tag:'FLIGHT', time:'13:56→17:11', klass:'', detail:null, mapsPin:'45.7772,-111.1530',
       title:{ko:'AS2062 SFO → BZN', en:'AS2062 SFO → BZN'},
       body:{ko:'원래보다 약 47분 늦어진 새 스케줄. 도착 후 렌터카(Enterprise, 확인번호 397898852) 픽업 — 예약은 17:00이라 좀 늦게 도착해도 문제 없음.',
             en:'New schedule, about 47 min later than originally booked. Pick up the rental (Enterprise, confirmation 397898852) after landing — reservation was for 17:00, so arriving a bit late is fine.'}},
-    {tag:'SHOPPING', time:'~17:30', klass:'meal', detail:null,
+    {tag:'SHOPPING', time:'~17:30', klass:'meal', detail:null, mapsPin:'45.6770,-111.0429',
       title:{ko:'Bozeman 대형 장보기', en:'Big grocery run in Bozeman'},
       body:{ko:'공항 근처 Costco Bozeman 또는 Town & Country Foods에서 4박치 장보기 한번에 끝내기. 공원 안 General Store보다 훨씬 저렴하고 선택지도 많음. <b>이 타이밍이 이번 여행 유일한 "제대로 된 장보기" 기회</b> — 못 챙긴 건 이후 각 지역 General Store에서 보충.',
             en:'Do the whole 4-night grocery run at Costco Bozeman or Town & Country Foods near the airport — much cheaper and better selection than the in-park General Stores. <b>This is the only real full grocery run of the trip</b>; anything missed can be topped up at General Stores along the way.'}},
@@ -335,14 +343,20 @@ const DAYS = [
       title:{ko:'Bozeman → Gardiner → Mammoth', en:'Bozeman → Gardiner → Mammoth'},
       body:{ko:'Gardiner에서 1903년 시어도어 루스벨트가 헌정한 <b>Roosevelt Arch</b>(North Entrance)를 지나 입장. Mammoth 진입 직전 구간 <b>Gardiner River High Bridge 공사</b>로 1차선 교행, 최대 15분 지연 있음(10월 말까지 상시).',
             en:'Enter through the <b>Roosevelt Arch</b> at Gardiner (North Entrance), dedicated by Theodore Roosevelt in 1903. Just before Mammoth, the <b>Gardiner River High Bridge</b> construction reduces traffic to one lane — expect up to 15 min delay, ongoing through late October.'}},
-    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null,
+    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null, mapsPin:'44.9769,-110.7042',
       title:{ko:'Mammoth Hot Springs Hotel · Frontier Cabin (2 Queen)', en:'Mammoth Hot Springs Hotel · Frontier Cabin (2 Queen)'},
       body:{ko:'주방 없는 캐빈. 도착이 저녁 시간대라 첫날은 무리해서 그릴하지 말고 가볍게. 코스트코에서 산 샌드위치/델리류나 Mammoth General Store 델리로 해결 추천.',
             en:'No kitchen in the cabin. Since arrival is in the evening, skip grilling tonight — deli/sandwich items from the Costco run, or the Mammoth General Store deli, are the easy call.'}}
   ]},
 { id:'d2', num:2, date:'Sun, Aug 2',
   theme:{ko:'매머스 → 노리스 → 캐년 → 레이크', en:'Mammoth → Norris → Canyon → Lake'},
-  route:['Mammoth Terraces','Norris Geyser Basin','Canyon (Artist Point)','Hayden Valley','Lake Yellowstone Hotel'],
+  route:[
+    {label:'Mammoth Terraces', mapsQuery:'44.9767,-110.7048'},
+    {label:'Norris Geyser Basin', mapsQuery:'44.7264,-110.7036'},
+    {label:'Canyon (Artist Point)', mapsQuery:'44.7295,-110.4867'},
+    {label:'Hayden Valley', mapsQuery:'44.6473,-110.4790'},
+    {label:'Lake Yellowstone Hotel', mapsQuery:'44.5533,-110.3982'}
+  ],
   stops:[
     {tag:'SITE', time:'아침', klass:'', detail:'mammoth',
       title:{ko:'Mammoth Hot Springs Terraces', en:'Mammoth Hot Springs Terraces'},
@@ -363,18 +377,23 @@ const DAYS = [
       title:{ko:'Hayden Valley', en:'Hayden Valley'},
       body:{ko:'과거 호수 바닥이었던 광활한 초지 — 들소떼의 주요 서식지. 이른 아침/해질녘이 최적 관찰 시간.',
             en:'A former lakebed turned wide-open grassland and prime bison habitat. Best viewed at dawn or dusk.'}},
-    {tag:'MEAL', time:'저녁', klass:'meal', detail:null,
+    {tag:'MEAL', time:'저녁', klass:'meal', detail:null, mapsPin:'44.5540,-110.3970',
       title:{ko:'그릴 디너 · Lake Village Picnic Area', en:'Grill dinner · Lake Village Picnic Area'},
       body:{ko:'테이블 4개, 호숫가 뷰. <b>주의: 화로(fire grate) 없음</b> — 개방형 캠프파이어 불가, self-contained 차콜 그릴/캠프스토브만 사용.',
             en:'4 tables, lake view. <b>No fire grate here</b> — open campfires aren\'t allowed, only a self-contained charcoal grill or camp stove.'}},
-    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null,
+    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null, mapsPin:'44.5533,-110.3982',
       title:{ko:'Lake Yellowstone Hotel · Cabin (2 Doubles)', en:'Lake Yellowstone Hotel · Cabin (2 Doubles)'},
       body:{ko:'2박. 여기도 주방 없음. 다이닝룸 예약 실패 — Lake Lodge Cafeteria(워크인) 대안.',
             en:'2 nights, no kitchen. Dining room reservation fell through — Lake Lodge Cafeteria (walk-in) is the backup.'}}
   ]},
 { id:'d3', num:3, date:'Mon, Aug 3',
   theme:{ko:'올드페이스풀 데이트립', en:'Old Faithful day trip'},
-  route:['Lake Hotel','West Thumb Geyser Basin','Old Faithful / Upper Geyser Basin','Lake Hotel'],
+  route:[
+    {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'},
+    {label:'West Thumb Geyser Basin', mapsQuery:'44.4152,-110.5776'},
+    {label:'Old Faithful / Upper Geyser Basin', mapsQuery:'44.4605,-110.8281'},
+    {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'}
+  ],
   stops:[
     {tag:'ALERT', time:'', klass:'meal', detail:null,
       title:{ko:'Old Faithful Overpass 공사 중', en:'Old Faithful Overpass construction'},
@@ -388,23 +407,29 @@ const DAYS = [
       title:{ko:'Old Faithful & Upper Geyser Basin', en:'Old Faithful & Upper Geyser Basin'},
       body:{ko:'세계 최대는 아니지만 가장 예측 가능한 간헐천(60~110분 간격). Old Faithful Inn도 함께 구경.',
             en:'Not the biggest geyser, but the most predictable (every 60–110 min). Don\'t miss the historic Old Faithful Inn nearby.'}},
-    {tag:'MEAL', time:'점심', klass:'meal', detail:null,
+    {tag:'MEAL', time:'점심', klass:'meal', detail:null, mapsPin:'44.4605,-110.8281',
       title:{ko:'Old Faithful Village에서 외식', en:'Eat out at Old Faithful Village'},
       body:{ko:'Bear Paw Deli, Geyser Grill 등 여러 옵션. 오늘은 외식으로 편하게.',
             en:'Several options: Bear Paw Deli, Geyser Grill, etc. Easier to eat out on a long-drive day.'}},
-    {tag:'MEAL', time:'저녁', klass:'meal', detail:null,
+    {tag:'MEAL', time:'저녁', klass:'meal', detail:null, mapsPin:'44.5613,-110.4283',
       title:{ko:'Lake 지역 복귀 후 그릴 디너', en:'Grill dinner back near Lake'},
       body:{ko:'Lake Village 또는 Bridge Bay Picnic Area(화로 있음).', en:'Lake Village or Bridge Bay Picnic Area (has fire grates).'}}
   ]},
 { id:'d4', num:4, date:'Tue, Aug 4',
   theme:{ko:'헤이든밸리 → 캐년 → 타워/라마 → 매머스', en:'Hayden Valley → Canyon → Tower/Lamar → Mammoth'},
-  route:['Lake Hotel','Hayden Valley (dawn)','Canyon','Tower-Roosevelt / Lamar Valley','Mammoth Hot Springs'],
+  route:[
+    {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'},
+    {label:'Hayden Valley (dawn)', mapsQuery:'44.6473,-110.4790'},
+    {label:'Canyon', mapsQuery:'44.7295,-110.4867'},
+    {label:'Tower-Roosevelt / Lamar Valley', mapsQuery:'44.9153,-110.2287'},
+    {label:'Mammoth Hot Springs', mapsQuery:'44.9767,-110.7048'}
+  ],
   stops:[
     {tag:'WILDLIFE', time:'이른 아침', klass:'', detail:'hayden',
       title:{ko:'Hayden Valley · Nez Perce Ford Picnic Area', en:'Hayden Valley · Nez Perce Ford Picnic Area'},
       body:{ko:'해뜰 무렵이 야생동물 활동 최고조. 들소와는 최소 25야드(23m) 거리 유지 — 8월은 짝짓기 철.',
             en:'Sunrise is peak wildlife activity. Stay at least 25 yards (23m) from bison — August is rut season.'}},
-    {tag:'MEAL', time:'아침', klass:'meal', detail:null,
+    {tag:'MEAL', time:'아침', klass:'meal', detail:null, mapsPin:'44.6190,-110.4790',
       title:{ko:'그릴/캠프스토브 브렉퍼스트', en:'Grill/camp-stove breakfast'},
       body:{ko:'같은 피크닉 구역, 화로 있음.', en:'Same picnic area — it has a fire grate.'}},
     {tag:'SITE', time:'경유', klass:'', detail:'canyon',
@@ -417,19 +442,24 @@ const DAYS = [
       title:{ko:'Tower-Roosevelt & Lamar Valley', en:'Tower-Roosevelt & Lamar Valley'},
       body:{ko:'1995~96년 회색늑대 재도입이 이뤄진 곳, "American Serengeti"라 불리는 최고의 야생동물 관찰 회랑.',
             en:'Site of the 1995–96 gray wolf reintroduction, often called the "American Serengeti."'}},
-    {tag:'MEAL', time:'점심', klass:'meal', detail:null,
+    {tag:'MEAL', time:'점심', klass:'meal', detail:null, mapsPin:'44.8946,-110.4160',
       title:{ko:'Tower Fall General Store 또는 Yellowstone River Picnic Area', en:'Tower Fall General Store or Yellowstone River Picnic Area'},
       body:{ko:'후자는 화로 있는 몇 안 되는 곳 중 하나.', en:'The latter is one of the few picnic areas with a fire grate.'}},
-    {tag:'MEAL', time:'저녁', klass:'meal', detail:null,
+    {tag:'MEAL', time:'저녁', klass:'meal', detail:null, mapsPin:'44.9145,-110.7215',
       title:{ko:'Sheepeater Cliff Picnic Area', en:'Sheepeater Cliff Picnic Area'},
       body:{ko:'매머스 남쪽, 현무암 절벽 아래 아담한 장소.', en:'A small spot south of Mammoth beneath a basalt cliff.'}},
-    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null,
+    {tag:'LODGING', time:'체크인 4pm~', klass:'lodging', detail:null, mapsPin:'44.9769,-110.7042',
       title:{ko:'Mammoth Hot Springs Hotel · Pet Friendly Frontier Cabin', en:'Mammoth Hot Springs Hotel · Pet Friendly Frontier Cabin'},
       body:{ko:'마지막 밤.', en:'Last night.'}}
   ]},
 { id:'d5', num:5, date:'Wed, Aug 5',
   theme:{ko:'귀국', en:'Heading home'},
-  route:['Mammoth','Gardiner','Bozeman Airport','SFO'],
+  route:[
+    {label:'Mammoth', mapsQuery:'44.9767,-110.7048'},
+    {label:'Gardiner', mapsQuery:'45.0269,-110.7024'},
+    {label:'Bozeman Airport', mapsQuery:'45.7772,-111.1530'},
+    {label:'SFO', mapsQuery:'37.6213,-122.3790', mapsExclude:true}
+  ],
   stops:[
     {tag:'SITE', time:'아침', klass:'', detail:'mammoth',
       title:{ko:'짧은 마무리 산책', en:'One last short walk'},
@@ -444,10 +474,10 @@ const DAYS = [
     {tag:'MEAL', time:'점심', klass:'meal', detail:null,
       title:{ko:'Livingston 또는 Gardiner에서 외식', en:'Eat out in Livingston or Gardiner'},
       body:{ko:'여행 마무리로 편하게 레스토랑에서.', en:'A relaxed sit-down meal to close out the trip.'}},
-    {tag:'RETURN', time:'~17:00', klass:'', detail:null,
+    {tag:'RETURN', time:'~17:00', klass:'', detail:null, mapsPin:'45.7772,-111.1530',
       title:{ko:'렌터카 반납 (Bozeman Yellowstone Intl Airport)', en:'Return rental car (Bozeman Yellowstone Intl Airport)'},
       body:{ko:'Enterprise, Confirmation 397898852.', en:'Enterprise, Confirmation 397898852.'}},
-    {tag:'FLIGHT', time:'17:51→19:25', klass:'', detail:null,
+    {tag:'FLIGHT', time:'17:51→19:25', klass:'', detail:null, mapsPin:'45.7772,-111.1530',
       title:{ko:'AS2063 BZN → SFO', en:'AS2063 BZN → SFO'},
       body:{ko:'원래보다 약 47분 늦어진 새 스케줄 — 오히려 공항 여유시간이 늘어난 셈.', en:'New schedule, about 47 min later — if anything, more airport buffer time.'}}
   ]}
@@ -567,6 +597,19 @@ function getImages(key, width){
   return detail.images.map(f => commonsUrl(f, width));
 }
 
+let imagesPrefetched = false;
+function prefetchAllImages(){
+  if(imagesPrefetched) return;
+  imagesPrefetched = true;
+  Object.keys(SITE_DETAILS).forEach(key=>{
+    getImages(key, 640).forEach(url=>{
+      const img = new Image();
+      img.onerror = ()=>{};
+      img.src = url;
+    });
+  });
+}
+
 function hydrateThumbnails(){
   document.querySelectorAll('[data-detail]').forEach(el=>{
     const key = el.dataset.detail;
@@ -588,7 +631,7 @@ function openSheet(key){
   const overlay = document.getElementById('sheetOverlay');
   const galleryUrls = getImages(key, 640);
   const galleryHTML = galleryUrls.map(u=>
-    `<img src="${u}" loading="lazy" alt="" onerror="this.style.display='none'">`
+    `<img src="${u}" alt="" onerror="this.style.display='none'">`
   ).join('');
 
   sheet.innerHTML = `
@@ -614,11 +657,12 @@ document.getElementById('sheetOverlay').addEventListener('click', closeSheet);
 
 /* ---------- render helpers ---------- */
 function routeMapsUrl(stops){
-  const clean = stops.map(s => s.replace(/\s*\(.+?\)\s*/g, '').trim());
-  const enc = clean.map(s => encodeURIComponent(s + ' Yellowstone'));
-  const origin = enc[0];
-  const destination = enc[enc.length-1];
-  const waypoints = enc.slice(1,-1).join('|');
+  const included = stops.filter(s => !s.mapsExclude);
+  const coords = included.map(s => encodeURIComponent(s.mapsQuery));
+  if(coords.length < 2) return '#';
+  const origin = coords[0];
+  const destination = coords[coords.length-1];
+  const waypoints = coords.slice(1,-1).join('|');
   let url = 'https://www.google.com/maps/dir/?api=1&origin=' + origin + '&destination=' + destination;
   if(waypoints) url += '&waypoints=' + waypoints;
   return url;
@@ -636,18 +680,23 @@ function routeSVG(stops){
       lines += '<line x1="'+px+'" y1="'+y+'" x2="'+x+'" y2="'+y+'" stroke="#2F4A3C" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>';
     }
     dots += '<circle cx="'+x+'" cy="'+y+'" r="7" fill="'+(i===0||i===n-1?'#A6461D':'#3E8F94')+'" stroke="#FBF8EF" stroke-width="2"/>';
-    labels += '<text x="'+x+'" y="'+(y+26)+'" text-anchor="middle" class="route-label">'+s+'</text>';
+    labels += '<text x="'+x+'" y="'+(y+26)+'" text-anchor="middle" class="route-label">'+s.label+'</text>';
   });
   return '<svg class="route-svg" width="'+w+'" height="70" viewBox="0 0 '+w+' 70">'+lines+dots+labels+'</svg>';
 }
 
 function renderDayPanel(day){
   const stopsHTML = day.stops.map(s=>{
-    const clickable = !!s.detail;
-    const thumb = clickable ? '<div class="thumb-wrap"><img class="thumb-img" alt=""></div>' : '';
+    const hasDetail = !!s.detail;
+    const hasPin = !hasDetail && !!s.mapsPin;
+    const clickable = hasDetail || hasPin;
+    let thumb = '';
+    if(hasDetail) thumb = '<div class="thumb-wrap"><img class="thumb-img" alt=""></div>';
+    else if(hasPin) thumb = '<div class="thumb-wrap thumb-pin">🗺️</div>';
     const tagClass = s.tag === 'ALERT' ? 'stop-tag tag-alert' : 'stop-tag';
+    const attrs = hasDetail ? `data-detail="${s.detail}"` : (hasPin ? `data-mapspin="${s.mapsPin}"` : '');
     return `
-    <div class="stop ${s.klass} ${clickable?'clickable':''}" ${clickable?`data-detail="${s.detail}"`:''}>
+    <div class="stop ${s.klass} ${clickable?'clickable':''}" ${attrs}>
       <div class="stop-flex">
         <div class="stop-main">
           <span class="${tagClass}">${s.tag}</span>
@@ -698,15 +747,25 @@ function renderMealsPanel(){
 }
 
 function renderGuidePanel(){
+  const dayMap = {};
+  DAYS.forEach(day=>{
+    day.stops.forEach(s=>{
+      if(!s.detail) return;
+      if(!dayMap[s.detail]) dayMap[s.detail] = new Set();
+      dayMap[s.detail].add(day.num);
+    });
+  });
   const cards = GUIDE_CARDS.map(c=>{
     const d = SITE_DETAILS[c.key];
     const preview = d.body[0] ? t(d.body[0]) : '';
+    const days = dayMap[c.key] ? Array.from(dayMap[c.key]).sort((a,b)=>a-b) : [];
+    const pillsHTML = days.map(n=>`<span class="day-pill">Day ${n}</span>`).join('');
     return `
     <div class="guide-card" data-detail="${c.key}">
       <div class="stop-flex">
         <div class="stop-main">
           <div class="kicker">${c.kicker}</div>
-          <h4>${t(d.title)}</h4>
+          <h4>${t(d.title)}${pillsHTML}</h4>
           <p>${preview}</p>
           <div class="tap-hint">${t(UI.tapHint)}</div>
         </div>
@@ -762,6 +821,11 @@ function attachDetailHandlers(){
       openSheet(el.dataset.detail);
     });
   });
+  document.querySelectorAll('[data-mapspin]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      window.open('https://www.google.com/maps/search/?api=1&query=' + el.dataset.mapspin, '_blank', 'noopener');
+    });
+  });
 }
 
 function renderAll(){
@@ -802,6 +866,7 @@ document.getElementById('langBtn').addEventListener('click', ()=>{
 });
 
 renderAll();
+prefetchAllImages();
 </script>
 </body>
 </html>
