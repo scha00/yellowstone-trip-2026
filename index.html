@@ -85,6 +85,8 @@
   .stop-body{font-size:14px; line-height:1.65; margin-top:8px; opacity:.9;}
   .stop-tag{display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--pine); background:rgba(47,74,60,0.08); border-radius:5px; padding:2px 7px; margin-bottom:6px;}
   .stop-tag.tag-alert{color:#fff; background:var(--rust); font-weight:700;}
+  .hike-badge{display:inline-flex; align-items:center; gap:4px; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.02em; color:#7A5A12; background:rgba(214,163,43,0.2); border-radius:5px; padding:2px 7px 2px 6px; margin-bottom:6px; margin-left:6px;}
+  .hike-badge svg{width:11px; height:11px; flex:0 0 auto;}
   .tap-hint{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--geyser); margin-top:8px;}
 
   .alert-box{background:rgba(166,70,29,0.08); border:1px solid rgba(166,70,29,0.3); border-radius:10px; padding:12px 14px; font-size:13.5px; line-height:1.6; margin:16px 0;}
@@ -365,7 +367,7 @@ const DAYS = [
     {tag:'DRIVE', time:'', klass:'', detail:null,
       title:{ko:'Golden Gate Canyon 경유', en:'Via Golden Gate Canyon'},
       body:{ko:'좁은 협곡을 지나는 짧지만 극적인 구간. 사진 포인트.', en:'A short but dramatic narrow canyon stretch — good photo stop.'}},
-    {tag:'SITE', time:'낮', klass:'', detail:'norris',
+    {tag:'SITE', time:'낮', klass:'', detail:'norris', hike:'~2.5mi · 1.5hr',
       title:{ko:'Norris Geyser Basin', en:'Norris Geyser Basin'},
       body:{ko:'공원에서 가장 뜨겁고 산성이 강한 지열지대. 세계 최고 높이의 활동 간헐천 Steamboat Geyser가 있어요.',
             en:'The hottest, most acidic thermal area in the park — home to Steamboat Geyser, the tallest active geyser on Earth.'}},
@@ -399,11 +401,11 @@ const DAYS = [
       title:{ko:'Old Faithful Overpass 공사 중', en:'Old Faithful Overpass construction'},
       body:{ko:'7/20~8/14 진행 중 공사 구간. 1차선 교행, 최대 15분 지연. 왕복 모두 영향받으니 여유 있게 출발.',
             en:'Active construction July 20–Aug 14. One lane, up to 15 min delay, affecting both directions — leave with extra buffer.'}},
-    {tag:'SITE', time:'가는 길', klass:'', detail:'westthumb',
+    {tag:'SITE', time:'가는 길', klass:'', detail:'westthumb', hike:'0.5mi · 20min',
       title:{ko:'West Thumb Geyser Basin', en:'West Thumb Geyser Basin'},
       body:{ko:'옐로스톤 칼데라 가장자리, 호수 바로 옆에서 간헐천이 솟는 독특한 지형.',
             en:'Sits on the edge of the Yellowstone Caldera, with geysers erupting right at the lake\'s shore.'}},
-    {tag:'SITE', time:'낮', klass:'', detail:'oldfaithful',
+    {tag:'SITE', time:'낮', klass:'', detail:'oldfaithful', hike:'~2.8mi · 1–1.5hr',
       title:{ko:'Old Faithful & Upper Geyser Basin', en:'Old Faithful & Upper Geyser Basin'},
       body:{ko:'세계 최대는 아니지만 가장 예측 가능한 간헐천(60~110분 간격). Old Faithful Inn도 함께 구경.',
             en:'Not the biggest geyser, but the most predictable (every 60–110 min). Don\'t miss the historic Old Faithful Inn nearby.'}},
@@ -432,7 +434,7 @@ const DAYS = [
     {tag:'MEAL', time:'아침', klass:'meal', detail:null, mapsPin:'44.6190,-110.4790',
       title:{ko:'그릴/캠프스토브 브렉퍼스트', en:'Grill/camp-stove breakfast'},
       body:{ko:'같은 피크닉 구역, 화로 있음.', en:'Same picnic area — it has a fire grate.'}},
-    {tag:'SITE', time:'경유', klass:'', detail:'canyon',
+    {tag:'SITE', time:'경유', klass:'', detail:'canyon', hike:'~1.4mi · 40min',
       title:{ko:'Canyon Village (재방문 옵션)', en:'Canyon Village (optional revisit)'},
       body:{ko:'전날 놓친 North Rim Trail이나 Inspiration Point 있으면 여기서 보충.', en:'Catch North Rim Trail or Inspiration Point here if you missed them the day before.'}},
     {tag:'ALERT', time:'', klass:'meal', detail:null,
@@ -461,7 +463,7 @@ const DAYS = [
     {label:'SFO', mapsQuery:'37.6213,-122.3790', mapsExclude:true}
   ],
   stops:[
-    {tag:'SITE', time:'아침', klass:'', detail:'mammoth',
+    {tag:'SITE', time:'아침', klass:'', detail:'mammoth', hike:'~0.5mi · 15min',
       title:{ko:'짧은 마무리 산책', en:'One last short walk'},
       body:{ko:'테라스를 다른 아침 햇살로 다시 보거나, Beaver Ponds Trail 초입만. 체크아웃 11am 전까지.', en:'See the terraces in different morning light, or just the start of Beaver Ponds Trail. Check out by 11am.'}},
     {tag:'MEAL', time:'아침', klass:'meal', detail:null,
@@ -695,11 +697,12 @@ function renderDayPanel(day){
     else if(hasPin) thumb = `<div class="thumb-wrap thumb-pin"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="var(--rust)"/><circle cx="12" cy="9" r="2.6" fill="var(--paper)"/></svg></div>`;
     const tagClass = s.tag === 'ALERT' ? 'stop-tag tag-alert' : 'stop-tag';
     const attrs = hasDetail ? `data-detail="${s.detail}"` : (hasPin ? `data-mapspin="${s.mapsPin}"` : '');
+    const hikeHTML = s.hike ? `<span class="hike-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>${s.hike}</span>` : '';
     return `
     <div class="stop ${s.klass} ${clickable?'clickable':''}" ${attrs}>
       <div class="stop-flex">
         <div class="stop-main">
-          <span class="${tagClass}">${s.tag}</span>
+          <span class="${tagClass}">${s.tag}</span>${hikeHTML}
           <div class="stop-name">${t(s.title)}</div>
           <div class="stop-body">${t(s.body)}</div>
           ${clickable?`<div class="tap-hint">${t(UI.tapHint)}</div>`:''}
