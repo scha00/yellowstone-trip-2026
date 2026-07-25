@@ -72,6 +72,7 @@
   .stop{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-bottom:14px; border-left:5px solid var(--geyser); position:relative;}
   .stop.lodging{border-left-color:var(--sulfur);}
   .stop.meal{border-left-color:var(--rust);}
+  .stop.optional{border-left-style:dotted;}
   .stop.clickable{cursor:pointer; transition:transform .1s ease, box-shadow .1s ease;}
   .stop.clickable:hover{transform:translateY(-1px); box-shadow:0 4px 14px rgba(35,32,25,0.08);}
   .stop-flex{display:flex; gap:12px; justify-content:space-between;}
@@ -319,6 +320,58 @@ const SITE_DETAILS = {
       {ko:'재밌게도 아치는 옐로스톤 공식 경계선보다 살짝 바깥, Gardiner 마을 쪽에 서 있어요 — 순전히 상징적인 "관문"으로 세워진 거예요. 자동차가 대중화되기 전이라 처음엔 마차와 기차로 도착한 방문객들을 맞이하기 위한 구조물이었어요.',
        en:'Interestingly, the arch stands just outside Yellowstone\'s official boundary, on the Gardiner town side — it\'s a purely symbolic "gateway." Built before cars were common, it was originally meant to greet visitors arriving by stagecoach and train.'}
     ]
+  },
+  grandprismatic: {
+    title:{ko:'Grand Prismatic Spring & Midway Geyser Basin', en:'Grand Prismatic Spring & Midway Geyser Basin'},
+    mapsQuery:'44.5251,-110.8347',
+    images:['Grand_Prismatic_Spring_and_Midway_Geyser_Basin_from_above.jpg','Grand_Prismatic_Spring,_Yellowstone_NP,_from_the_boardwalk.jpg','Aerial_image_of_Grand_Prismatic_Spring_(view_from_the_south).jpg'],
+    body:[
+      {ko:'미국에서 가장 크고 세계에서 세 번째로 큰 온천으로, 지름 약 110m(370ft), 깊이는 50m(160ft)가 넘어요. 옐로스톤 최고의 포토스팟으로 꼽히는 이유는 온도별로 다르게 서식하는 호열성 박테리아·조류 매트가 만드는 무지개색 고리 때문 — 가장 뜨거운 한가운데는 미생물이 못 살아 짙은 파란색 그대로 보이고, 바깥으로 갈수록 온도가 낮아지며 노랑·주황·빨강 계열 매트가 둘러싸요.',
+       en:'The largest hot spring in the U.S. and the third-largest in the world — about 110m (370ft) across and over 50m (160ft) deep. It\'s Yellowstone\'s single most photographed feature because of the rainbow rings of heat-loving bacteria and algae mats: the scalding center is too hot for anything to survive, so it stays a deep sterile blue, while cooler water toward the edges supports mats in yellow, orange, and red.'},
+      {ko:'<b>중요:</b> Midway Geyser Basin의 평평한 보드워크(왕복 약 1.3km)에서는 바로 옆에서 김 나는 온천을 볼 수 있지만, 유명한 "무지개 고리" 전체 모습은 위에서 내려다봐야 제대로 보여요. 그래서 최근 몇 년 새 가장 인기 있는 코스는 Fairy Falls Trailhead에서 출발해 <b>Grand Prismatic Overlook</b>까지 살짝 오르는 짧은 언덕길 — 여기서 내려다보면 그 유명한 사진 속 색감이 그대로 펼쳐져요.',
+       en:'<b>Key tip:</b> the flat boardwalk loop through Midway Geyser Basin (about 1.3km round trip) puts you right next to the steaming pool, but the famous rainbow-ring view only really shows from above. The most popular way to see it is the short uphill spur from the Fairy Falls Trailhead up to the <b>Grand Prismatic Overlook</b> — that\'s the elevated view behind almost every photo you\'ve seen of this place.'},
+      {ko:'바람 방향에 따라 증기가 시야를 가리는 경우가 많아 — 대체로 오전 시간대, 그리고 바람이 적은 날이 색이 가장 잘 보여요. 오버룩 전망대엔 난간이 없는 구간도 있으니 아이들과 함께라면 가장자리에서 조심.',
+       en:'Steam often blows across the view depending on wind direction — mornings and calmer days tend to give the clearest look at the colors. Some parts of the overlook trail have no guardrail, so keep an eye on kids near the edge.'}
+    ]
+  },
+  mudvolcano: {
+    title:{ko:'Mud Volcano & Sulphur Cauldron', en:'Mud Volcano & Sulphur Cauldron'},
+    mapsQuery:'44.6236,-110.4381',
+    images:["Mud_Volcano_steams_in_the_afternoon_sunshine_(54780366159).jpg","Mud_Volcano_boardwalk_junction_near_Black_Dragon's_Cauldron_(54780473880).jpg",'Boardwalk_at_Mud_Volcano_in_winter.jpg'],
+    body:[
+      {ko:'지금까지 본 지열지대와는 결이 달라요 — 이 구역은 물 공급이 적고 황화수소 가스가 많아, 올라온 산성 증기가 주변 암석을 녹여 맑은 물 대신 걸쭉한 회색 진흙으로 만들어요. 부글부글 끓어오르며 텀벙거리는 소리 때문에 "Mud Volcano"라는 이름이 붙었어요.',
+       en:'This basin feels different from the geyser fields you\'ve seen so far. Water here is scarce and hydrogen sulfide gas is abundant, so the rising acidic steam dissolves the surrounding rock into thick gray mud instead of clear pools. The constant bubbling, gulping, and splattering sound is exactly why it\'s called "Mud Volcano."'},
+      {ko:'바로 옆 <b>Sulphur Cauldron</b>은 공원에서 가장 산성이 강한 온천 중 하나 — pH가 1~2 정도로 배터리액에 가까워요. 샛노란 색은 순수한 황(sulfur) 침전물 때문. 근처 Dragon\'s Mouth Spring은 동굴 같은 입구에서 물이 출렁이며 "으르렁"거리는 소리를 내 초기 탐험가들이 용이 사는 굴이라고 생각했다는 이야기가 전해져요.',
+       en:'Right next to it, <b>Sulphur Cauldron</b> is one of the most acidic springs in the park — roughly pH 1–2, close to battery acid. Its bright yellow color comes from pure sulfur deposits. Nearby, Dragon\'s Mouth Spring gurgles and booms out of a cave-like opening; early explorers thought a dragon lived inside.'},
+      {ko:'짧은 보드워크 루프라 부담 없이 둘러볼 수 있고, Hayden Valley에서 캐년 방향으로 가는 길목이라 살짝 들르기 좋아요.',
+       en:'A short, easy boardwalk loop — and it sits right along the road between Hayden Valley and Canyon, so it\'s a low-effort detour on the way through.'}
+    ]
+  },
+  naturalbridge: {
+    title:{ko:'Natural Bridge', en:'Natural Bridge'},
+    mapsQuery:'44.5423,-110.4165',
+    images:['Natural_Bridge_near_Bridge_Bay_Marina_(20500277840).jpg','Bridge_Yellowstone_01.JPG','Natural_Bridge_-_YNP_(53527714148).jpg'],
+    body:[
+      {ko:'높이 약 15m(51ft)의 암석 아치로, Bridge Creek이 오랜 세월 유문암(rhyolite)을 깎아내며 만들어졌어요. 겉은 단단한 암석이 남고 안쪽 약한 층이 먼저 뚫리면서 지금의 다리 모양이 생겼어요.',
+       en:'A roughly 15m (51ft) rock arch carved out by Bridge Creek slowly eroding through rhyolite over a long stretch of time — the softer inner layer wore through first while the harder outer rock held its shape, leaving the bridge standing.'},
+      {ko:'Bridge Bay 마리나 주차장에서 평탄한 길을 따라 약 1.6km(1마일) 걸으면 도착해요 — 걷기 편한 자갈길이라 자전거로도 다녀올 수 있어요. 예전엔 다리 위로 말과 마차가 실제로 건너다녔다는데, 지금은 훼손 방지를 위해 다리 위 통행은 금지돼 있어요.',
+       en:'It\'s an easy ~1.6km (1 mile) walk on flat gravel from the Bridge Bay Marina parking lot — flat enough to bike, too. Horses and wagons once actually crossed over the top of the bridge; that\'s no longer allowed, to protect the formation.'},
+      {ko:'레이크 지역 숙소에서 가깝고 경사가 거의 없어서, 저녁 시간에 가볍게 다녀오기 좋은 산책 코스예요.',
+       en:'Close to the Lake-area lodging and nearly flat — a nice easy stroll for an evening when there\'s a little extra time.'}
+    ]
+  },
+  lakebutte: {
+    title:{ko:'Lake Butte Overlook', en:'Lake Butte Overlook'},
+    mapsQuery:'44.5457,-110.3040',
+    images:['Yellowstone_Lake_from_Lake_Butte_Overlook_(14710657737).jpg','Teton_Range_from_Lake_Butte_Overlook_(47995460877).jpg','Heading_to_Lake_Butte_Overlook_(18)_(8579013748).jpg'],
+    body:[
+      {ko:'East Entrance Road에서 살짝 벗어나, 해발 2,544m(8,348ft) 정상까지 올라가는 짧고 가파른 포장도로 끝에 있는 전망대 — 주차 공간이 5대 정도뿐인 작은 곳이에요.',
+       en:'A short, steep paved spur off the East Entrance Road climbing to a 2,544m (8,348ft) summit — the parking area holds only about five cars.'},
+      {ko:'옐로스톤 호수 전체와 섬들, 날씨가 맑으면 남쪽으로 그랜드티턴 산맥, 북쪽으로 Absaroka 산맥까지 한눈에 들어와요. 걷는 구간은 주차장에서 전망대까지 몇 걸음뿐이라 하이킹이라기보단 "드라이브+뷰"에 가까워요.',
+       en:'From the top you get a sweeping view of Yellowstone Lake and its islands, with the Grand Tetons to the south and the Absaroka Range to the north on a clear day. The walk from the parking lot to the viewpoint is just a few steps — this is a drive-up view, not really a hike.'},
+      {ko:'특히 일몰 시간대에 인기 있는 곳 — Lake 지역 숙소에서 저녁 먹기 전 살짝 들르기 좋아요.',
+       en:'A favorite at sunset — an easy detour from the Lake-area lodging before dinner.'}
+    ]
   }
 };
 
@@ -357,6 +410,7 @@ const DAYS = [
     {label:'Norris Geyser Basin', mapsQuery:'44.7264,-110.7036'},
     {label:'Canyon (Artist Point)', mapsQuery:'44.7295,-110.4867'},
     {label:'Hayden Valley', mapsQuery:'44.6473,-110.4790'},
+    {label:'Lake Butte*', mapsQuery:'44.5457,-110.3040'},
     {label:'Lake Yellowstone Hotel', mapsQuery:'44.5533,-110.3982'}
   ],
   stops:[
@@ -379,6 +433,10 @@ const DAYS = [
       title:{ko:'Hayden Valley', en:'Hayden Valley'},
       body:{ko:'과거 호수 바닥이었던 광활한 초지 — 들소떼의 주요 서식지. 이른 아침/해질녘이 최적 관찰 시간.',
             en:'A former lakebed turned wide-open grassland and prime bison habitat. Best viewed at dawn or dusk.'}},
+    {tag:'SITE', time:'저녁(일몰)', klass:'', detail:'lakebutte', optional:true,
+      title:{ko:'Lake Butte Overlook (선택)', en:'Lake Butte Overlook (optional)'},
+      body:{ko:'East Entrance Road로 살짝 벗어나는 짧은 드라이브 — 호수 전체와 티턴 산맥까지 보이는 일몰 명당. 시간 되면만.',
+            en:'A short detour off the East Entrance Road — sweeping views of the lake and the Tetons, a favorite sunset spot. Only if time allows.'}},
     {tag:'MEAL', time:'저녁', klass:'meal', detail:null, mapsPin:'44.5540,-110.3970',
       title:{ko:'그릴 디너 · Lake Village Picnic Area', en:'Grill dinner · Lake Village Picnic Area'},
       body:{ko:'테이블 4개, 호숫가 뷰. <b>주의: 화로(fire grate) 없음</b> — 개방형 캠프파이어 불가, self-contained 차콜 그릴/캠프스토브만 사용.',
@@ -393,7 +451,9 @@ const DAYS = [
   route:[
     {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'},
     {label:'West Thumb Geyser Basin', mapsQuery:'44.4152,-110.5776'},
+    {label:'Grand Prismatic Spring', mapsQuery:'44.5251,-110.8347'},
     {label:'Old Faithful / Upper Geyser Basin', mapsQuery:'44.4605,-110.8281'},
+    {label:'Natural Bridge*', mapsQuery:'44.5423,-110.4165'},
     {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'}
   ],
   stops:[
@@ -405,6 +465,10 @@ const DAYS = [
       title:{ko:'West Thumb Geyser Basin', en:'West Thumb Geyser Basin'},
       body:{ko:'옐로스톤 칼데라 가장자리, 호수 바로 옆에서 간헐천이 솟는 독특한 지형.',
             en:'Sits on the edge of the Yellowstone Caldera, with geysers erupting right at the lake\'s shore.'}},
+    {tag:'SITE', time:'가는 길', klass:'', detail:'grandprismatic', hike:'~1.2mi · 30min',
+      title:{ko:'Grand Prismatic Spring & Midway Geyser Basin', en:'Grand Prismatic Spring & Midway Geyser Basin'},
+      body:{ko:'옐로스톤 최고의 포토스팟 — 그 유명한 무지개색은 위에서 내려다봐야 제대로 보여요. Fairy Falls Trailhead에서 Grand Prismatic Overlook까지 살짝 오르는 걸 추천.',
+            en:'Yellowstone\'s single most photographed spot — the famous rainbow colors really only show from above. Worth the short climb from Fairy Falls Trailhead up to the Grand Prismatic Overlook.'}},
     {tag:'SITE', time:'낮', klass:'', detail:'oldfaithful', hike:'~2.8mi · 1–1.5hr',
       title:{ko:'Old Faithful & Upper Geyser Basin', en:'Old Faithful & Upper Geyser Basin'},
       body:{ko:'세계 최대는 아니지만 가장 예측 가능한 간헐천(60~110분 간격). Old Faithful Inn도 함께 구경.',
@@ -413,6 +477,10 @@ const DAYS = [
       title:{ko:'Old Faithful Village에서 외식', en:'Eat out at Old Faithful Village'},
       body:{ko:'Bear Paw Deli, Geyser Grill 등 여러 옵션. 오늘은 외식으로 편하게.',
             en:'Several options: Bear Paw Deli, Geyser Grill, etc. Easier to eat out on a long-drive day.'}},
+    {tag:'SITE', time:'복귀 후', klass:'', detail:'naturalbridge', optional:true, hike:'~2.5mi · 1hr',
+      title:{ko:'Natural Bridge (선택)', en:'Natural Bridge (optional)'},
+      body:{ko:'Bridge Bay 마리나에서 평탄한 길로 왕복 가능한 암석 아치. 저녁 먹기 전 시간 되면만.',
+            en:'A rock arch reachable on a flat round-trip walk from Bridge Bay Marina. Only if there\'s time before dinner.'}},
     {tag:'MEAL', time:'저녁', klass:'meal', detail:null, mapsPin:'44.5613,-110.4283',
       title:{ko:'Lake 지역 복귀 후 그릴 디너', en:'Grill dinner back near Lake'},
       body:{ko:'Lake Village 또는 Bridge Bay Picnic Area(화로 있음).', en:'Lake Village or Bridge Bay Picnic Area (has fire grates).'}}
@@ -421,12 +489,17 @@ const DAYS = [
   theme:{ko:'헤이든밸리 → 캐년 → 타워/라마 → 매머스', en:'Hayden Valley → Canyon → Tower/Lamar → Mammoth'},
   route:[
     {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'},
+    {label:'Mud Volcano*', mapsQuery:'44.6236,-110.4381'},
     {label:'Hayden Valley (dawn)', mapsQuery:'44.6473,-110.4790'},
     {label:'Canyon', mapsQuery:'44.7295,-110.4867'},
     {label:'Tower-Roosevelt / Lamar Valley', mapsQuery:'44.9153,-110.2287'},
     {label:'Mammoth Hot Springs', mapsQuery:'44.9767,-110.7048'}
   ],
   stops:[
+    {tag:'SITE', time:'가는 길', klass:'', detail:'mudvolcano', optional:true, hike:'0.6mi · 20min',
+      title:{ko:'Mud Volcano & Sulphur Cauldron (선택)', en:'Mud Volcano & Sulphur Cauldron (optional)'},
+      body:{ko:'Lake에서 Hayden Valley로 가는 길목, 걸쭉한 진흙 온천과 강산성 Sulphur Cauldron. 짧은 보드워크라 잠깐 들르기 좋음.',
+            en:'Right on the way from Lake to Hayden Valley — thick mud pots and the highly acidic Sulphur Cauldron. Short boardwalk, easy quick stop.'}},
     {tag:'WILDLIFE', time:'이른 아침', klass:'', detail:'hayden',
       title:{ko:'Hayden Valley · Nez Perce Ford Picnic Area', en:'Hayden Valley · Nez Perce Ford Picnic Area'},
       body:{ko:'해뜰 무렵이 야생동물 활동 최고조. 들소와는 최소 25야드(23m) 거리 유지 — 8월은 짝짓기 철.',
@@ -532,7 +605,11 @@ const GUIDE_CARDS = [
   {key:'oldfaithful', kicker:'Old Faithful'},
   {key:'lamar', kicker:'Lamar Valley & Tower-Roosevelt'},
   {key:'yellowstonelake', kicker:'Yellowstone Lake'},
-  {key:'roosevelt', kicker:'Roosevelt Arch'}
+  {key:'roosevelt', kicker:'Roosevelt Arch'},
+  {key:'grandprismatic', kicker:'Midway Geyser Basin'},
+  {key:'mudvolcano', kicker:'Hayden Valley → Canyon'},
+  {key:'naturalbridge', kicker:'Near Bridge Bay'},
+  {key:'lakebutte', kicker:'East Entrance Road'}
 ];
 
 /* ---------- RESERVATIONS ---------- */
@@ -672,7 +749,7 @@ function routeMapsUrl(stops){
 
 function routeSVG(stops){
   const n = stops.length;
-  const w = Math.max(640, n*150);
+  const w = Math.max(640, n*175);
   const y = 40;
   let dots='', lines='', labels='';
   stops.forEach((s,i)=>{
@@ -699,7 +776,7 @@ function renderDayPanel(day){
     const attrs = hasDetail ? `data-detail="${s.detail}"` : (hasPin ? `data-mapspin="${s.mapsPin}"` : '');
     const hikeHTML = s.hike ? `<span class="hike-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>${s.hike}</span>` : '';
     return `
-    <div class="stop ${s.klass} ${clickable?'clickable':''}" ${attrs}>
+    <div class="stop ${s.klass} ${clickable?'clickable':''} ${s.optional?'optional':''}" ${attrs}>
       <div class="stop-flex">
         <div class="stop-main">
           <span class="${tagClass}">${s.tag}</span>${hikeHTML}
