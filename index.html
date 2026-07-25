@@ -692,7 +692,7 @@ function renderDayPanel(day){
     const clickable = hasDetail || hasPin;
     let thumb = '';
     if(hasDetail) thumb = '<div class="thumb-wrap"><img class="thumb-img" alt=""></div>';
-    else if(hasPin) thumb = '<div class="thumb-wrap thumb-pin">🗺️</div>';
+    else if(hasPin) thumb = `<div class="thumb-wrap thumb-pin"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="var(--rust)"/><circle cx="12" cy="9" r="2.6" fill="var(--paper)"/></svg></div>`;
     const tagClass = s.tag === 'ALERT' ? 'stop-tag tag-alert' : 'stop-tag';
     const attrs = hasDetail ? `data-detail="${s.detail}"` : (hasPin ? `data-mapspin="${s.mapsPin}"` : '');
     return `
