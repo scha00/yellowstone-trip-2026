@@ -94,6 +94,7 @@
   .alert-box b{color:var(--rust);}
 
   .section-title{font-family:'Bitter', serif; font-weight:800; font-size:22px; margin:28px 0 12px; color:var(--pine-deep);}
+  .section-hint{font-size:13.5px; opacity:.75; margin:-6px 0 14px;}
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   @media (max-width:640px){.grid2{grid-template-columns:1fr;}}
   .list-card{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
@@ -189,11 +190,12 @@ const UI = {
   tabGuide:{ko:'📖 가이드북', en:'📖 Guide Book'},
   tabRes:{ko:'🎫 예약정보', en:'🎫 Reservations'},
   mealsHead:{ko:'MEALS & SHOPPING', en:'MEALS & SHOPPING'},
-  mealsTheme:{ko:'장보기 리스트 & 조리 규정', en:'Shopping list & cooking rules'},
+  mealsTheme:{ko:'그릴 메뉴 고르기 & 준비물 체크리스트', en:'Pick your grill menus & packing checklist'},
   kitchenAlert:{ko:'<b>중요:</b> 캐빈/코티지 어디에도 주방이 없습니다. 요리는 전부 <b>피크닉 구역</b>에서 self-contained 차콜 그릴 또는 캠프스토브로만 가능하고, 개방형 모닥불은 화로(fire grate)가 있는 곳에서만 허용돼요. 음식·쿨러는 안 쓸 때 항상 차 안이나 곰 방지 보관함에 넣어둘 것 — 규정이자 안전 문제입니다.',
     en:'<b>Important:</b> none of the cabins/cottages have a kitchen. Cooking only happens at <b>picnic areas</b>, using a self-contained charcoal grill or camp stove — open wood fires are allowed only where a fire grate exists. Food and coolers must stay in the car or a bear-proof box whenever not in active use — it is both a rule and a safety issue.'},
-  shopTitle:{ko:'쇼핑 리스트 (Bozeman 도착 직후 한 번에)', en:'Shopping list (one big run right after landing in Bozeman)'},
-  mealNotesTitle:{ko:'일자별 식사 메모', en:'Day-by-day meal notes'},
+  shopTitle:{ko:'준비물 체크리스트', en:'Packing checklist'},
+  mealOptionsTitle:{ko:'그릴 메뉴 고르기', en:'Pick your grill menus'},
+  mealOptionsHint:{ko:'그릴 나이트가 총 3번이니, 아래서 골라 필요한 만큼 곱하세요.', en:'There are 3 grill nights total — pick from below and scale quantities as needed.'},
   guideHead:{ko:'GUIDE BOOK', en:'GUIDE BOOK'},
   guideTheme:{ko:'탭해서 자세히 보기 — 사진 · 역사 · 팁 · 구글맵', en:'Tap any card for photos, history, tips, and a map link'},
   resHead:{ko:'RESERVATIONS', en:'RESERVATIONS'},
@@ -321,17 +323,30 @@ const SITE_DETAILS = {
        en:'Interestingly, the arch stands just outside Yellowstone\'s official boundary, on the Gardiner town side — it\'s a purely symbolic "gateway." Built before cars were common, it was originally meant to greet visitors arriving by stagecoach and train.'}
     ]
   },
-  grandprismatic: {
-    title:{ko:'Grand Prismatic Spring & Midway Geyser Basin', en:'Grand Prismatic Spring & Midway Geyser Basin'},
-    mapsQuery:'44.5251,-110.8347',
-    images:['Grand_Prismatic_Spring_and_Midway_Geyser_Basin_from_above.jpg','Grand_Prismatic_Spring,_Yellowstone_NP,_from_the_boardwalk.jpg','Aerial_image_of_Grand_Prismatic_Spring_(view_from_the_south).jpg'],
+  midway: {
+    title:{ko:'Midway Geyser Basin (Grand Prismatic 보드워크)', en:'Midway Geyser Basin (Grand Prismatic Boardwalk)'},
+    mapsQuery:'44.5245,-110.8383',
+    images:['Grand Prismatic Spring and Midway Geyser Basin Yellowstone NP.jpg','Grand Prismatic Pool and Excelsior Geyser Crater (3952550025).jpg','Grand Prismatic Spring (11 August 2011) 1 (14299202968).jpg'],
     body:[
-      {ko:'미국에서 가장 크고 세계에서 세 번째로 큰 온천으로, 지름 약 110m(370ft), 깊이는 50m(160ft)가 넘어요. 옐로스톤 최고의 포토스팟으로 꼽히는 이유는 온도별로 다르게 서식하는 호열성 박테리아·조류 매트가 만드는 무지개색 고리 때문 — 가장 뜨거운 한가운데는 미생물이 못 살아 짙은 파란색 그대로 보이고, 바깥으로 갈수록 온도가 낮아지며 노랑·주황·빨강 계열 매트가 둘러싸요.',
-       en:'The largest hot spring in the U.S. and the third-largest in the world — about 110m (370ft) across and over 50m (160ft) deep. It\'s Yellowstone\'s single most photographed feature because of the rainbow rings of heat-loving bacteria and algae mats: the scalding center is too hot for anything to survive, so it stays a deep sterile blue, while cooler water toward the edges supports mats in yellow, orange, and red.'},
-      {ko:'<b>중요:</b> Midway Geyser Basin의 평평한 보드워크(왕복 약 1.3km)에서는 바로 옆에서 김 나는 온천을 볼 수 있지만, 유명한 "무지개 고리" 전체 모습은 위에서 내려다봐야 제대로 보여요. 그래서 최근 몇 년 새 가장 인기 있는 코스는 Fairy Falls Trailhead에서 출발해 <b>Grand Prismatic Overlook</b>까지 살짝 오르는 짧은 언덕길 — 여기서 내려다보면 그 유명한 사진 속 색감이 그대로 펼쳐져요.',
-       en:'<b>Key tip:</b> the flat boardwalk loop through Midway Geyser Basin (about 1.3km round trip) puts you right next to the steaming pool, but the famous rainbow-ring view only really shows from above. The most popular way to see it is the short uphill spur from the Fairy Falls Trailhead up to the <b>Grand Prismatic Overlook</b> — that\'s the elevated view behind almost every photo you\'ve seen of this place.'},
-      {ko:'바람 방향에 따라 증기가 시야를 가리는 경우가 많아 — 대체로 오전 시간대, 그리고 바람이 적은 날이 색이 가장 잘 보여요. 오버룩 전망대엔 난간이 없는 구간도 있으니 아이들과 함께라면 가장자리에서 조심.',
-       en:'Steam often blows across the view depending on wind direction — mornings and calmer days tend to give the clearest look at the colors. Some parts of the overlook trail have no guardrail, so keep an eye on kids near the edge.'}
+      {ko:'미국에서 가장 크고 세계에서 세 번째로 큰 온천, Grand Prismatic Spring을 물가에서 바로 만나는 평평한 보드워크. 왕복 0.5~0.8마일, 20~30분이면 충분하고 경사가 없어 유모차도 밀고 갈 수 있는 수준이지만, 보드워크 폭 자체는 좁은 편이라 붐빌 땐 서로 비켜가야 해요.',
+       en:'A flat boardwalk that puts you right at the edge of Grand Prismatic Spring — the largest hot spring in the U.S. and third-largest in the world. Round trip is just 0.5-0.8 miles, 20-30 minutes, with no real elevation change (stroller-friendly), though the boardwalk itself is fairly narrow, so you\'ll be squeezing past other visitors when it\'s busy.'},
+      {ko:'풀 지름이 약 113m로 축구장 하나 크기라, 바닥 높이에서는 그 유명한 무지개 전체 패턴이 한눈에 안 들어와요 — 대신 색색의 가장자리와 피어오르는 증기를 가까이서 체감하는 재미가 커요. 같은 보드워크에서 한때 90m까지 물을 뿜었다는 <b>Excelsior Geyser</b>(지금은 잠잠한 거대 분화구 온천)와 Opal Pool, Turquoise Pool도 함께 볼 수 있어요.',
+       en:'The pool itself is about 113m (370ft) across — roughly the size of a football field — so from ground level you don\'t get the full rainbow pattern in one glance. What you get instead is an up-close feel for the colors and rising steam. The same boardwalk also passes <b>Excelsior Geyser</b> (a now-dormant giant crater that once erupted up to 90m high), plus Opal Pool and Turquoise Pool.'},
+      {ko:'주차장이 하루 종일(대략 오전 9시~오후 6시) 붐비고 "터무니없이 작다"는 평이 많아요. 꽉 차면 도로 갓길에 세우는 차들이 흔하고, 사실상 용인되는 분위기예요.',
+       en:'The parking lot is busy essentially all day (roughly 9am-6pm) and often described as absurdly small for how popular the spot is. When it fills up, roadside parking along the shoulder is common — and effectively the accepted overflow plan.'}
+    ]
+  },
+  gp_overlook: {
+    title:{ko:'Grand Prismatic Overlook (Fairy Falls Trailhead)', en:'Grand Prismatic Overlook (Fairy Falls Trailhead)'},
+    mapsQuery:'44.5245,-110.8420',
+    images:['Aerial image of Grand Prismatic Spring (view from the south).jpg','Grand Prismatic Overlook (36012512136).jpg','Grand prismatic spring edit.jpg'],
+    body:[
+      {ko:'그 유명한 "항공뷰 무지개색" 사진이 나오는 바로 그 자리 — 옐로스톤을 대표하는 사진들이 거의 다 여기서 찍혀요. 왕복 1.2~1.6마일, 45분~1시간. 대부분 완만하지만 마지막 0.6마일 구간에서 고도 32~60m를 오르는 짧은 오르막이 있어요.',
+       en:'This is the exact spot behind that famous aerial-rainbow photo — nearly every iconic Yellowstone image of the spring is taken from right here. Round trip is 1.2-1.6 miles, 45 minutes to an hour. Most of it is gentle, with a short, steeper climb of 32-60m (100-200ft) packed into the final 0.6 miles.'},
+      {ko:'<b>중요:</b> 반드시 별도의 <b>Fairy Falls Trailhead</b> 주차장에서 출발해야 해요 — Grand Prismatic/Midway 주차장과는 완전히 다른 곳이라, 거기서는 이 트레일로 못 가요. 주차장이 본 주차장+오버플로우 2개라 Midway보다는 여유가 있는 편.',
+       en:'<b>Key tip:</b> you must start from the separate <b>Fairy Falls Trailhead</b> parking lot — it\'s entirely different from the Grand Prismatic/Midway lot, and you can\'t reach this trail from there. It has two lots (main + overflow), so it\'s a bit more forgiving than Midway\'s.'},
+      {ko:'이 시간대(아침 일찍)엔 증기와 안개로 색이 흐릿하게 보일 확률이 높아요 — 가장 선명한 색은 보통 오전 11시~오후 1시 사이인데, 그 시간대는 주차가 훨씬 힘들어져요. 이번 방문은 확실한 주차 쪽을 택한 트레이드오프. 트레일 자체는 이어서 Fairy Falls(편도 2.5마일, 낙차 67m 폭포)까지 계속되지만, 이번엔 짧은 오버룩 스퍼까지만 다녀와요.',
+       en:'This early in the morning, steam and haze often mute the colors — the clearest view is usually 11am-1pm, but parking gets much harder around then. This visit trades peak color for reliable parking. The trail itself continues on to Fairy Falls (2.5 miles one-way, a 67m/220ft waterfall), but this stop is just the short overlook spur.'}
     ]
   },
   mudvolcano: {
@@ -447,28 +462,33 @@ const DAYS = [
             en:'2 nights, no kitchen. Dining room reservation fell through — Lake Lodge Cafeteria (walk-in) is the backup.'}}
   ]},
 { id:'d3', num:3, date:'Mon, Aug 3',
-  theme:{ko:'올드페이스풀 데이트립', en:'Old Faithful day trip'},
+  theme:{ko:'올드페이스풀 데이트립 (아침 일찍 그랜드 프리즈매틱 먼저)', en:'Old Faithful day trip (Grand Prismatic first thing in the morning)'},
   route:[
     {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'},
-    {label:'West Thumb Geyser Basin', mapsQuery:'44.4152,-110.5776'},
-    {label:'Grand Prismatic Spring', mapsQuery:'44.5251,-110.8347'},
+    {label:'Midway Geyser Basin', mapsQuery:'44.5245,-110.8383'},
+    {label:'Grand Prismatic Overlook', mapsQuery:'44.5245,-110.8420'},
     {label:'Old Faithful / Upper Geyser Basin', mapsQuery:'44.4605,-110.8281'},
+    {label:'West Thumb Geyser Basin', mapsQuery:'44.4152,-110.5776'},
     {label:'Natural Bridge*', mapsQuery:'44.5423,-110.4165'},
     {label:'Lake Hotel', mapsQuery:'44.5533,-110.3982'}
   ],
   stops:[
+    {tag:'DRIVE', time:'6:30am 출발', klass:'', detail:null,
+      title:{ko:'Lake → Midway Geyser Basin', en:'Lake → Midway Geyser Basin'},
+      body:{ko:'약 45마일, 1시간15분~1시간30분. West Thumb·Old Faithful은 이 시점엔 그냥 통과만(정차 없이) — 나중에 돌아오는 길에 들름.',
+            en:'~45 miles, 1h15-1h30min. Pass through West Thumb and Old Faithful without stopping this early — visit them on the way back.'}},
+    {tag:'SITE', time:'8:00am~8:30am', klass:'', detail:'midway',
+      title:{ko:'Midway Geyser Basin (Grand Prismatic 보드워크)', en:'Midway Geyser Basin (Grand Prismatic Boardwalk)'},
+      body:{ko:'물 바로 옆 클로즈업 뷰. 왕복 0.5~0.8마일 평지 보드워크, 20~30분. 아침 이 시간엔 주차 여유 있음 — 시간대 크게 안 타는 스팟.',
+            en:'Close-up, water-level view. 0.5-0.8mi flat boardwalk loop, 20-30min. Parking should be manageable this early — this spot isn\'t very time-sensitive.'}},
+    {tag:'ALERT', time:'8:50am~9:45am', klass:'meal', detail:'gp_overlook',
+      title:{ko:'Grand Prismatic Overlook (Fairy Falls Trailhead)', en:'Grand Prismatic Overlook (Fairy Falls Trailhead)'},
+      body:{ko:'항공뷰 무지개색 전경. 왕복 1.2~1.6마일, 45분~1시간. 주차장 2개(본+오버플로우)라 Midway보다 여유. <b>이 시간대엔 아직 안개 낀 뷰일 확률 높음</b> — 가장 선명한 건 11시~1시지만 그땐 주차가 더 힘듦. 이번엔 주차 확실함 쪽으로 감.',
+            en:'The aerial rainbow view. 1.2-1.6mi round trip, 45min-1hr. Two lots (main + overflow) so easier than Midway. <b>Likely still misty at this hour</b> — clearest colors are 11am-1pm, but parking is much harder then. Prioritizing reliable parking this time.'}},
     {tag:'ALERT', time:'', klass:'meal', detail:null,
       title:{ko:'Old Faithful Overpass 공사 중', en:'Old Faithful Overpass construction'},
       body:{ko:'7/20~8/14 진행 중 공사 구간. 1차선 교행, 최대 15분 지연. 왕복 모두 영향받으니 여유 있게 출발.',
             en:'Active construction July 20–Aug 14. One lane, up to 15 min delay, affecting both directions — leave with extra buffer.'}},
-    {tag:'SITE', time:'가는 길', klass:'', detail:'westthumb', hike:'0.5mi · 20min',
-      title:{ko:'West Thumb Geyser Basin', en:'West Thumb Geyser Basin'},
-      body:{ko:'옐로스톤 칼데라 가장자리, 호수 바로 옆에서 간헐천이 솟는 독특한 지형.',
-            en:'Sits on the edge of the Yellowstone Caldera, with geysers erupting right at the lake\'s shore.'}},
-    {tag:'SITE', time:'가는 길', klass:'', detail:'grandprismatic', hike:'~1.2mi · 30min',
-      title:{ko:'Grand Prismatic Spring & Midway Geyser Basin', en:'Grand Prismatic Spring & Midway Geyser Basin'},
-      body:{ko:'옐로스톤 최고의 포토스팟 — 그 유명한 무지개색은 위에서 내려다봐야 제대로 보여요. Fairy Falls Trailhead에서 Grand Prismatic Overlook까지 살짝 오르는 걸 추천.',
-            en:'Yellowstone\'s single most photographed spot — the famous rainbow colors really only show from above. Worth the short climb from Fairy Falls Trailhead up to the Grand Prismatic Overlook.'}},
     {tag:'SITE', time:'낮', klass:'', detail:'oldfaithful', hike:'~2.8mi · 1–1.5hr',
       title:{ko:'Old Faithful & Upper Geyser Basin', en:'Old Faithful & Upper Geyser Basin'},
       body:{ko:'세계 최대는 아니지만 가장 예측 가능한 간헐천(60~110분 간격). Old Faithful Inn도 함께 구경.',
@@ -477,6 +497,10 @@ const DAYS = [
       title:{ko:'Old Faithful Village에서 외식', en:'Eat out at Old Faithful Village'},
       body:{ko:'Bear Paw Deli, Geyser Grill 등 여러 옵션. 오늘은 외식으로 편하게.',
             en:'Several options: Bear Paw Deli, Geyser Grill, etc. Easier to eat out on a long-drive day.'}},
+    {tag:'SITE', time:'복귀 길', klass:'', detail:'westthumb', hike:'0.5mi · 20min',
+      title:{ko:'West Thumb Geyser Basin', en:'West Thumb Geyser Basin'},
+      body:{ko:'옐로스톤 칼데라 가장자리, 호수 바로 옆에서 간헐천이 솟는 독특한 지형.',
+            en:'Sits on the edge of the Yellowstone Caldera, with geysers erupting right at the lake\'s shore.'}},
     {tag:'SITE', time:'복귀 후', klass:'', detail:'naturalbridge', optional:true, hike:'~2.5mi · 1hr',
       title:{ko:'Natural Bridge (선택)', en:'Natural Bridge (optional)'},
       body:{ko:'Bridge Bay 마리나에서 평탄한 길로 왕복 가능한 암석 아치. 저녁 먹기 전 시간 되면만.',
@@ -560,40 +584,86 @@ const DAYS = [
 
 /* ---------- SHOPPING / MEALS ---------- */
 const SHOPPING = [
-  { id:'grill', title:{ko:'그릴 & 조리 장비', en:'Grill & cooking gear'}, items:[
-    {ko:'Self-contained 차콜 그릴 (휴대용, 접이식) — 캐빈에 그릴 없음, 직접 지참 필수', en:'Self-contained portable/foldable charcoal grill — cabins have none, must bring your own'},
-    {ko:'차콜 + 착화탄/차콜 체임니', en:'Charcoal + fire starter / charcoal chimney'},
-    {ko:'휴대용 프로판 2구 스토브 + 캐니스터 (아침/점심용, 차콜보다 빠름)', en:'Portable 2-burner propane stove + canisters (for breakfast/lunch — faster than charcoal)'},
-    {ko:'라이터/성냥, 집게, 알루미늄 포일 (그릴판 덮개용 — 세척 안 됨)', en:'Lighter/matches, tongs, aluminum foil (to line the grates — they aren\'t cleaned between users)'}
+  { id:'bring', title:{ko:'🎒 가져갈것', en:'🎒 Bring from home'}, items:[
+    {ko:'전기포트', en:'Electric kettle'},
+    {ko:'커피도구', en:'Coffee gear'},
+    {ko:'컵라면', en:'Instant cup noodles'},
+    {ko:'햇반', en:'Instant rice (Hetbahn)'},
+    {ko:'나무젓가락', en:'Wooden chopsticks'},
+    {ko:'세제 소량', en:'A small bottle of dish soap'},
+    {ko:'수세미', en:'Dish scrubber'},
+    {ko:'충전기', en:'Chargers'},
+    {ko:'세면도구', en:'Toiletries'},
+    {ko:'옷', en:'Clothes'},
+    {ko:'썬크림', en:'Sunscreen'},
+    {ko:'물티슈', en:'Wet wipes'},
+    {ko:'손소독제', en:'Hand sanitizer'},
+    {ko:'키친타올', en:'Paper towels'},
+    {ko:'도마', en:'Cutting board'},
+    {ko:'칼', en:'Knife'},
+    {ko:'가위', en:'Scissors'},
+    {ko:'집게', en:'Tongs'},
+    {ko:'스낵', en:'Snacks'},
+    {ko:'식용유 소량', en:'A small bottle of cooking oil'},
+    {ko:'카메라', en:'Camera'},
+    {ko:'쓰레기봉지 다수', en:'Plenty of trash bags'},
+    {ko:'지퍼백', en:'Zip-lock bags'},
+    {ko:'조미료(소금/후추 등)', en:'Seasonings (salt, pepper, etc.)'}
   ]},
-  { id:'cooler', title:{ko:'보냉 & 얼음', en:'Cooler & ice'}, items:[
-    {ko:'하드 쿨러 1개 이상 (스티로폼보다 얼음 오래감, 4박이라 추천) + 여분 스티로폼', en:'At least one hard cooler (holds ice longer than styrofoam, worth it for 4 nights) + a spare styrofoam one'},
-    {ko:'아이스팩 다수 + 얼음 (부족하면 각 지역 General Store에서 보충 가능)', en:'Plenty of ice packs + ice (top up at any General Store along the way if needed)'},
-    {ko:'고기용/음료용 쿨러 분리 — 자주 여는 음료 쿨러 따로', en:'Keep meat and drinks in separate coolers — drinks get opened far more often'}
+  { id:'rent', title:{ko:'🏪 빌릴것 (Explore Rentals, 공항 근처)', en:'🏪 Rent (Explore Rentals, near the airport)'}, items:[
+    {ko:'프로판 스토브/그릴', en:'Propane stove/grill'},
+    {ko:'스테인 냄비/후라이팬', en:'Stainless pots/frying pan'},
+    {ko:'아이스박스(쿨러)', en:'Cooler/ice box'},
+    {ko:'곰 스프레이 2개', en:'Bear spray x2'}
   ]},
-  { id:'food', title:{ko:'식재료', en:'Food'}, items:[
-    {ko:'스테이크/버거패티/소시지, 마리네이드 치킨', en:'Steaks/burger patties/sausages, marinated chicken'},
-    {ko:'버거번, 옥수수·피망 등 그릴채소, 샐러드용 야채, 과일', en:'Buns, grill veggies (corn, peppers, etc.), salad greens, fruit'},
-    {ko:'시리얼/그래놀라바/베이글/땅콩버터잼 (조리 없는 아침용)', en:'Cereal/granola bars/bagels/PB&J (no-cook breakfast items)'},
-    {ko:'간식, 트레일믹스, 생수 (고도 있어 건조함 — 물 넉넉히!)', en:'Snacks, trail mix, water (high altitude and dry air — bring plenty)'},
-    {ko:'커피/티, 조미료 세트', en:'Coffee/tea, condiments'}
-  ]},
-  { id:'misc', title:{ko:'기타 필수품', en:'Other essentials'}, items:[
-    {ko:'종이접시/컵/수저, 쓰레기봉투 다수 (팩아웃 원칙)', en:'Paper plates/cups/utensils, plenty of trash bags (pack-it-out rule)'},
-    {ko:'손소독제/물티슈 — 피크닉 구역 대부분 식수 없음', en:'Hand sanitizer/wet wipes — most picnic areas have no running water'},
-    {ko:'곰 스프레이 — 비행기 반입 절대 불가, 도착 후 Bozeman/Gardiner에서 구매 또는 대여', en:'Bear spray — cannot fly with it, buy or rent locally in Bozeman/Gardiner after landing'},
-    {ko:'키친타월, 대형 지퍼백', en:'Paper towels, large zip-lock bags'}
+  { id:'buy', title:{ko:'🛒 살것 (Bozeman 도착 후 현지구매)', en:'🛒 Buy locally (after landing in Bozeman)'}, items:[
+    {ko:'얼음팩', en:'Ice packs'},
+    {ko:'프로판 1파운드 캐니스터 (부족하면 옐로스톤 내 매머드/Fishing Bridge/Grant Village/올드페이스풀 Upper 주유소에서 추가구매 가능)', en:'1lb propane canisters (if you run low, more are sold at gas stations in Mammoth, Fishing Bridge, Grant Village, and Old Faithful Upper within the park)'},
+    {ko:'물', en:'Water'},
+    {ko:'음료수', en:'Soft drinks'},
+    {ko:'맥주', en:'Beer'},
+    {ko:'고기(그릴 메뉴에 따라 다짐육/스테이크 등)', en:'Meat (ground/steak, depending on the grill menu)'},
+    {ko:'소세지', en:'Sausages'},
+    {ko:'또띠아', en:'Tortillas'},
+    {ko:'살사', en:'Salsa'},
+    {ko:'과카몰리', en:'Guacamole'},
+    {ko:'안주', en:'Bar snacks (anju)'},
+    {ko:'스낵', en:'Snacks'},
+    {ko:'빵/버거빵', en:'Bread/burger buns'},
+    {ko:'패티', en:'Patties'},
+    {ko:'치즈', en:'Cheese'},
+    {ko:'양파', en:'Onions'},
+    {ko:'일회용 접시', en:'Disposable plates'},
+    {ko:'종이컵', en:'Paper cups'},
+    {ko:'일회용 유텐실', en:'Disposable utensils'}
   ]}
 ];
 
-const MEAL_NOTES = [
-  {ko:'<b>Day1 저녁</b> — 늦은 도착, 조리 없이 델리/샌드위치로 가볍게', en:'<b>Day 1 dinner</b> — late arrival, keep it easy with deli/sandwich items, no cooking'},
-  {ko:'<b>Day2 저녁</b> — Lake Village Picnic Area 그릴 (화로 없음 → 차콜 그릴/스토브만)', en:'<b>Day 2 dinner</b> — grill at Lake Village Picnic Area (no fire grate → charcoal grill/stove only)'},
-  {ko:'<b>Day3 점심</b> — Old Faithful Village 외식, 저녁은 Lake 인근 그릴', en:'<b>Day 3 lunch</b> — eat out at Old Faithful Village, dinner is a grill night near Lake'},
-  {ko:'<b>Day4</b> — 아침 Nez Perce Ford, 점심 Tower Fall 인근, 저녁 Sheepeater Cliff — 모두 화로 있는 구역', en:'<b>Day 4</b> — breakfast at Nez Perce Ford, lunch near Tower Fall, dinner at Sheepeater Cliff — all spots with fire grates'},
-  {ko:'<b>Day5</b> — 조리 없는 간단 아침 후 Livingston/Gardiner에서 점심 외식', en:'<b>Day 5</b> — simple no-cook breakfast, then a sit-down lunch in Livingston/Gardiner'},
-  {ko:'<b>레이크호텔 다이닝룸</b> 예약은 실패했으니 대안으로 Lake Lodge Cafeteria(워크인) 기억해두기', en:'The <b>Lake Hotel Dining Room</b> reservation didn\'t come through — remember Lake Lodge Cafeteria (walk-in) as the backup'}
+const MEAL_OPTIONS = [
+  { id:'burgers', name: {ko:'버거+소세지', en:'Burgers + Sausages'},
+    items: [
+      {ko:'버거패티 10~12개', en:'10-12 burger patties'},
+      {ko:'소세지/핫도그 12~16개', en:'12-16 sausages/hot dogs'},
+      {ko:'버거빵/빵 12개', en:'12 buns/bread'},
+      {ko:'치즈 12장', en:'12 cheese slices'},
+      {ko:'양파·토마토·양상추 약간', en:'a bit of onion, tomato, lettuce'}
+    ]},
+  { id:'steak', name: {ko:'스테이크', en:'Steak'},
+    items: [
+      {ko:'스테이크 6~8장 (인당 150~200g)', en:'6-8 steaks (150-200g per person)'},
+      {ko:'감자 8개', en:'8 potatoes'},
+      {ko:'버터/시즈닝', en:'butter/seasoning'}
+    ]},
+  { id:'tacos', name: {ko:'타코 (또띠아)', en:'Tacos (Tortilla)'},
+    items: [
+      {ko:'또띠아 16~20장 (인당 2~2.5장)', en:'16-20 tortillas (2-2.5 per person)'},
+      {ko:'고기 다짐육/다이스드 약 1.2~1.5kg (종류는 그날 결정)', en:'~1.2-1.5kg ground/diced meat (type decided day-of)'},
+      {ko:'살사 1~2병', en:'1-2 jars salsa'},
+      {ko:'과카몰리 1~2통', en:'1-2 tubs guacamole'},
+      {ko:'슈레드 치즈, 양상추, 사워크림(선택), 라임', en:'shredded cheese, lettuce, sour cream (optional), lime'}
+    ]}
 ];
+const MEAL_COMMON = { ko:'공통: 그릴채소(옥수수·피망), 샐러드 야채, 과일은 매번 넉넉히', en:'Common: grill veggies (corn, peppers), salad greens, fruit every time' };
 
 /* ---------- GUIDE CARDS (link into SITE_DETAILS) ---------- */
 const GUIDE_CARDS = [
@@ -606,7 +676,8 @@ const GUIDE_CARDS = [
   {key:'lamar', kicker:'Lamar Valley & Tower-Roosevelt'},
   {key:'yellowstonelake', kicker:'Yellowstone Lake'},
   {key:'roosevelt', kicker:'Roosevelt Arch'},
-  {key:'grandprismatic', kicker:'Midway Geyser Basin'},
+  {key:'midway', kicker:'Midway Geyser Basin'},
+  {key:'gp_overlook', kicker:'Fairy Falls Trailhead'},
   {key:'mudvolcano', kicker:'Hayden Valley → Canyon'},
   {key:'naturalbridge', kicker:'Near Bridge Bay'},
   {key:'lakebutte', kicker:'East Entrance Road'}
@@ -814,15 +885,21 @@ function renderMealsPanel(){
       <h4>${t(cat.title)}</h4>
       ${cat.items.map((it,i)=>checklineHTML('shop-'+cat.id+'-'+i, it)).join('')}
     </div>`).join('');
-  const notesHTML = `<div class="list-card">${MEAL_NOTES.map((n,i)=>checklineHTML('note-'+i, n)).join('')}</div>`;
+  const mealHTML = MEAL_OPTIONS.map(m=>`
+    <div class="list-card">
+      <h4>${t(m.name)}</h4>
+      ${m.items.map((it,i)=>checklineHTML('meal-'+m.id+'-'+i, it)).join('')}
+    </div>`).join('');
   return `
     <div class="day-head"><div class="day-num" style="font-size:26px;">🧺</div><div class="day-date">${t(UI.mealsHead)}</div></div>
     <div class="day-theme">${t(UI.mealsTheme)}</div>
     <div class="alert-box">${t(UI.kitchenAlert)}</div>
+    <div class="section-title">${t(UI.mealOptionsTitle)}</div>
+    <p class="section-hint">${t(UI.mealOptionsHint)}</p>
+    <div class="grid2">${mealHTML}</div>
+    <div class="list-card">${t(MEAL_COMMON)}</div>
     <div class="section-title">${t(UI.shopTitle)}</div>
     <div class="grid2">${shopHTML}</div>
-    <div class="section-title">${t(UI.mealNotesTitle)}</div>
-    ${notesHTML}
   `;
 }
 
